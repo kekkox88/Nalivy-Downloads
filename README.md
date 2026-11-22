@@ -46,12 +46,6 @@ Le mascotte ufficiali **Tigro**, **Whale** e **Colibrì** sono presenti nella pa
 
 Le build di sviluppo e le anteprime della community sono separate dalle release pubbliche. Questo repository è dedicato alla **distribuzione**, non ai sorgenti di sviluppo, ai dati del Vault o alle credenziali.
 
-### Sorgenti e licenze
-
-Prima di distribuire APK verificare gli obblighi relativi alle licenze dei componenti integrati. Il repository di sviluppo può rimanere privato, ma alcune licenze — incluse GPLv3 e GPL-3.0-or-later — possono richiedere di mettere a disposizione il **codice sorgente corrispondente** delle build distribuite. Vedere [SOURCE-COMPLIANCE.md](SOURCE-COMPLIANCE.md) e [RELEASE-CHECKLIST.md](RELEASE-CHECKLIST.md).
-
-**Nessun APK va pubblicato prima del completamento della verifica delle licenze e dell'approvazione della release.**
-
 ---
 
 <p align="center"><strong>Nalivy Simply Free</strong> · <em>Pure music. Simply.</em><br>by <strong>kekkox88</strong></p>
