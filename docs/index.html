@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c1426">
+  <meta name="description" content="Nalivy Simply Free — Apri. Cerca. Suona. Scopri l'app Android, le release ufficiali e gli aggiornamenti.">
+  <meta property="og:title" content="Nalivy Simply Free · Pure music. Simply.">
+  <meta property="og:description" content="Apri. Cerca. Suona. Musica, podcast e libreria, in stile Nalivy Simply.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://kekkox88.github.io/Nalivy-Downloads/assets/nalivy-cover.jpg">
+  <meta property="og:url" content="https://kekkox88.github.io/Nalivy-Downloads/">
+  <title>Nalivy Simply Free · Pure music. Simply.</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Vai al contenuto</a>
+  <div class="background-glow" aria-hidden="true"></div>
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="Navigazione principale">
+      <a class="brand" href="#top" aria-label="Nalivy Simply Free, torna all'inizio">
+        <span class="brand-symbol" aria-hidden="true">♫</span>
+        <span class="brand-text"><strong>Nalivy</strong><small>SIMPLY FREE</small></span>
+      </a>
+      <div class="nav-items">
+        <a href="#funzioni">Funzioni</a>
+        <a href="#release">Release</a>
+        <a href="#aggiornamenti">Aggiornamenti</a>
+      </div>
+      <a class="nav-github" href="https://github.com/kekkox88/Nalivy-Downloads" rel="noopener noreferrer" target="_blank">GitHub <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> NALIVY SIMPLY FREE · ANDROID</p>
+        <h1 id="hero-title">Apri.<br>Cerca.<br><span class="gradient-text">Suona.</span></h1>
+        <p class="hero-sub">La tua musica, i tuoi podcast, la tua libreria. Un'esperienza essenziale, con l'identità inconfondibile di Nalivy.</p>
+        <div class="hero-pills" aria-label="Caratteristiche">
+          <span>Musica</span><span>Podcast</span><span>Offline</span><span>Android Auto</span>
+        </div>
+        <div class="hero-actions">
+          <a class="button button-primary is-disabled" id="hero-download" href="#release" aria-disabled="true" tabindex="-1"><span aria-hidden="true">↓</span> Download in preparazione</a>
+          <a class="button button-outline" href="https://github.com/kekkox88/Nalivy-Downloads/releases" rel="noopener noreferrer" target="_blank">Tutte le versioni <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="hero-note">Solo release approvate. Nessun account obbligatorio per esplorare il catalogo pubblico.</p>
+      </div>
+      <figure class="cover-panel">
+        <img src="./assets/nalivy-cover.jpg" alt="Copertina ufficiale Nalivy Simply Free con Tigro, Whale e Colibrì, cinque funzioni principali e il motto Pure music. Simply." width="1227" height="1536" fetchpriority="high">
+        <figcaption>Exclusive development and preview only on <strong>Neptune Project Community</strong>.</figcaption>
+      </figure>
+    </section>
+
+    <section class="section section-line wrap" id="funzioni" aria-labelledby="features-title">
+      <div class="section-head"><span class="kicker">SIMPLE BY DESIGN</span><h2 id="features-title">Tutto quello che conta.</h2><p>Il cuore di Nalivy, senza complicazioni inutili.</p></div>
+      <div class="features">
+        <article class="feature"><div class="feature-icon youtube" aria-hidden="true">▶</div><h3>YouTube Music</h3><p>Scopri e ascolta il catalogo pubblico disponibile.</p></article>
+        <article class="feature"><div class="feature-icon spotify" aria-hidden="true">≋</div><h3>Spotify <span class="optional">opzionale</span></h3><p>Le tue raccolte e i metadati personali, senza player Spotify.</p></article>
+        <article class="feature"><div class="feature-icon podcasts" aria-hidden="true">◉</div><h3>Podcast</h3><p>Serie ed episodi in un'esperienza dedicata.</p></article>
+        <article class="feature"><div class="feature-icon offline" aria-hidden="true">↓</div><h3>Download offline</h3><p>I contenuti scaricati disponibili anche senza rete.</p></article>
+        <article class="feature"><div class="feature-icon library" aria-hidden="true">♫</div><h3>Libreria</h3><p>Raccolte, preferiti e musica sempre a portata di mano.</p></article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="release" aria-labelledby="release-title">
+      <div class="section-head"><span class="kicker">DOWNLOAD UFFICIALE</span><h2 id="release-title">L'ultima versione, in un posto solo.</h2><p>Il sito mostra automaticamente l'ultima release stabile pubblicata su GitHub.</p></div>
+      <div class="release-panel" aria-live="polite" aria-atomic="false">
+        <div class="release-top">
+          <div>
+            <span id="release-state" class="release-state"><span class="status-dot" aria-hidden="true"></span> Verifica disponibilità…</span>
+            <h3 id="release-name">Nalivy Simply Free</h3>
+            <p class="release-meta" id="release-meta">Controllo delle release ufficiali.</p>
+          </div>
+          <span class="release-channel">STABLE</span>
+        </div>
+        <p id="release-message" class="release-message">Le versioni di sviluppo non vengono pubblicate in questa sezione.</p>
+        <div class="downloads" id="download-files" hidden></div>
+        <div class="notes" id="release-notes" hidden><h4>Novità della versione</h4><p id="release-notes-text"></p></div>
+        <div class="release-bottom"><a id="release-page" href="https://github.com/kekkox88/Nalivy-Downloads/releases" target="_blank" rel="noopener noreferrer">Consulta GitHub Releases <span aria-hidden="true">↗</span></a><a id="checksum-link" href="#aggiornamenti" hidden>Verifica SHA-256</a></div>
+      </div>
+    </section>
+
+    <section class="section section-line wrap" id="aggiornamenti" aria-labelledby="updates-title">
+      <div class="section-head"><span class="kicker">AGGIORNAMENTI</span><h2 id="updates-title">Aggiorna senza ripartire da zero.</h2><p>Tre passaggi, una regola fondamentale: non disinstallare l'app per aggiornarla.</p></div>
+      <div class="steps">
+        <article class="step"><span class="step-number">01</span><h3>Scegli la release</h3><p>Scarica la APK approvata e compatibile con il tuo dispositivo dalla sezione Releases.</p></article>
+        <article class="step"><span class="step-number">02</span><h3>Verifica il file</h3><p>Controlla nome, versione e, quando disponibile, l'impronta SHA-256 pubblicata.</p></article>
+        <article class="step"><span class="step-number">03</span><h3>Installa sopra</h3><p>Con la stessa firma e lo stesso package Android mantiene app e configurazioni. Conferma l'installazione.</p></article>
+      </div>
+      <p class="update-disclaimer">L'installazione può essere rifiutata se firma o package non coincidono. In quel caso non disinstallare senza prima verificare i dati da conservare.</p>
+    </section>
+
+    <section class="community wrap" aria-labelledby="community-title"><div><span class="kicker">NEPTUNE PROJECT COMMUNITY</span><h2 id="community-title">La community è parte del viaggio.</h2><p>Sviluppo esclusivo e anteprime nella Neptune Project Community. Le release pubbliche approvate sono distribuite separatamente qui.</p></div><div class="community-guardians" aria-label="Le mascotte di Nalivy: Tigro, Whale e Colibrì">
+      <figure class="guardian guardian-tigro">
+        <div class="guardian-art"><img src="./assets/tigro.webp" width="620" height="562" alt="Tigro, mascotte pixel-art a forma di tigre arancione" loading="lazy" decoding="async"></div>
+        <figcaption>Tigro</figcaption>
+      </figure>
+      <figure class="guardian guardian-whale">
+        <div class="guardian-art"><img src="./assets/whale.webp" width="467" height="620" alt="Whale, mascotte pixel-art a forma di balena blu al timone" loading="lazy" decoding="async"></div>
+        <figcaption>Whale</figcaption>
+      </figure>
+      <figure class="guardian guardian-colibri">
+        <div class="guardian-art"><img src="./assets/colibri.webp" width="620" height="532" alt="Colibrì, mascotte pixel-art turchese con cuffie musicali" loading="lazy" decoding="async"></div>
+        <figcaption>Colibrì</figcaption>
+      </figure>
+    </div></section>
+  </main>
+
+  <footer class="footer wrap"><span><strong>Nalivy Simply Free</strong> · Pure music. Simply. · by kekkox88</span><div><a href="https://github.com/kekkox88/Nalivy-Downloads/releases">Release</a><a href="https://github.com/kekkox88/Nalivy-Downloads/blob/main/SOURCE-COMPLIANCE.md">Licenze e sorgenti</a></div></footer>
+</body>
+</html>

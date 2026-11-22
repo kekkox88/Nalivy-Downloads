@@ -1,0 +1,15 @@
+# APKs, signatures and private development material must never be committed.
+*.apk
+*.aab
+*.apks
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.env
+.env.*
+*.log
+.DS_Store
+Thumbs.db
+__pycache__/
