@@ -7,7 +7,7 @@
 
 <p align="center">
   <a href="https://kekkox88.github.io/Nalivy-Downloads/"><strong>🌐 Pagina download</strong></a> ·
-  <a href="https://github.com/kekkox88/Nalivy-Downloads/releases/latest"><strong>📦 Ultima release stabile</strong></a> ·
+  <a href="https://kekkox88.github.io/Nalivy-Downloads/#release"><strong>📦 Ultima versione approvata</strong></a> ·
   <a href="https://github.com/kekkox88/Nalivy-Downloads/releases"><strong>📜 Cronologia versioni</strong></a>
 </p>
 
