@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Licenze open source — Nalivy Simply Free</title>
+  <meta name="description" content="Attribuzioni e testi delle licenze open source dei componenti principali di Nalivy Simply Free 3.5.0 Build 100.">
+  <link rel="icon" href="../assets/nalivy-favicon.png">
+  <style>
+    :root{color-scheme:dark;font:16px/1.65 system-ui,-apple-system,Segoe UI,sans-serif;background:#0b1222;color:#f1f6ff}
+    *{box-sizing:border-box}body{margin:0}main{max-width:840px;margin:0 auto;padding:24px 20px 68px}
+    a{color:#7ce8f1;text-decoration-thickness:1px;text-underline-offset:3px}
+    h1,h2{line-height:1.25}h1{font-size:clamp(28px,6vw,43px);margin:22px 0}
+    h2{font-size:21px;margin:0 0 12px}.eyebrow{color:#c65ac5;font-weight:750;letter-spacing:.12em;font-size:12px}
+    .lead{color:#c4d6ed}.item{padding:21px;background:#15213a;border:1px solid #33465b;border-radius:18px;margin:13px 0}
+    .item p{margin:8px 0}.meta{color:#b9cce0;font-size:14px}
+    .note{border-left:3px solid #7ce8f1;padding:12px 16px;background:#111d31;border-radius:0 12px 12px 0}
+    .top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .top img{width:100px;height:auto}.links{display:flex;gap:14px;flex-wrap:wrap}
+    footer{padding-top:28px;border-top:1px solid #33465b;color:#a9bed6;font-size:14px}
+    a:focus-visible{outline:2px solid #7ce8f1;outline-offset:3px;border-radius:4px}
+  </style>
+</head>
+<body>
+<main>
+  <header class="top">
+    <a href="../" aria-label="Torna alla pagina di Nalivy Simply Free"><img src="../assets/nalivy-wordmark.svg" alt="Nalivy" width="5959" height="2000"></a>
+    <nav class="links" aria-label="Collegamenti"><a href="../">Home</a><a href="https://github.com/kekkox88/Nalivy-Downloads/releases/tag/v3.5.0-b100-rc1">Release B100</a></nav>
+  </header>
+  <p class="eyebrow">OPEN SOURCE · ATTRIBUZIONI</p>
+  <h1>Licenze e componenti di Nalivy</h1>
+  <p class="lead">Informazioni integrative su alcune dipendenze software utilizzate in Nalivy Simply Free 3.5.0 — Build 100 RC (22 novembre 2026).</p>
+  <p class="note"><strong>Nota sulla versione distribuita:</strong> questa pagina è un'integrazione documentale successiva alla pubblicazione. Gli APK B100 già firmati e il loro archivio sorgente originale non vengono modificati; non si dichiara che i testi seguenti fossero inclusi negli APK originari. L'inventario non è ancora un elenco completo di tutte le dipendenze transitive.</p>
+
+  <section class="item" aria-labelledby="np">
+    <h2 id="np">NewPipe Extractor</h2>
+    <p class="meta"><strong>Versione dichiarata:</strong> v0.26.5 · <strong>Licenza:</strong> GPL-3.0-or-later · <strong>Maven:</strong> <code>com.github.TeamNewPipe:NewPipeExtractor</code></p>
+    <p>© NewPipe e.V. e contributori. La libreria estrae metadati e informazioni da piattaforme video. La licenza consente GPL versione 3 o successive.</p>
+    <p class="links"><a href="./licenses/NEWPIPE_EXTRACTOR_GPL-3.0.txt">Testo integrale GPLv3</a><a href="https://github.com/TeamNewPipe/NewPipeExtractor/tree/v0.26.5">Sorgente upstream v0.26.5</a></p>
+  </section>
+  <section class="item" aria-labelledby="rh">
+    <h2 id="rh">Mozilla Rhino</h2>
+    <p class="meta"><strong>Versione dichiarata:</strong> 1.8.1 · <strong>Licenza principale:</strong> MPL-2.0 · <strong>Maven:</strong> <code>org.mozilla:rhino</code></p>
+    <p>Motore JavaScript utilizzato dalle estensioni e da componenti di estrazione. Il file di licenza upstream contiene anche note sull'applicabilità delle licenze.</p>
+    <p class="links"><a href="./licenses/RHINO_MPL-2.0.txt">Licenza e avvisi upstream</a><a href="https://github.com/mozilla/rhino">Progetto</a></p>
+  </section>
+  <section class="item" aria-labelledby="js">
+    <h2 id="js">jsoup</h2>
+    <p class="meta"><strong>Versione dichiarata da NewPipe:</strong> 1.22.2 · <strong>Licenza:</strong> MIT · <strong>Maven:</strong> <code>org.jsoup:jsoup</code></p>
+    <p>© 2009–2026 Jonathan Hedley. Dipendenza transitiva dichiarata da NewPipe Extractor v0.26.5; il numero effettivamente selezionato dal grafo Gradle della release richiede una verifica separata.</p>
+    <p class="links"><a href="./licenses/JSOUP_MIT.txt">Licenza MIT e copyright</a><a href="https://github.com/jhy/jsoup/tree/jsoup-1.22.2">Sorgente upstream</a></p>
+  </section>
+  <section class="item" aria-labelledby="m3">
+    <h2 id="m3">AndroidX Media3</h2>
+    <p class="meta"><strong>Versione dichiarata:</strong> 1.8.0 · <strong>Licenza:</strong> Apache-2.0</p>
+    <p>Componenti Media3/ExoPlayer per la riproduzione. © The Android Open Source Project e contributori.</p>
+    <p class="links"><a href="./licenses/APACHE-2.0.txt">Testo integrale Apache-2.0</a><a href="https://github.com/androidx/media">Progetto</a></p>
+  </section>
+  <section class="item" aria-labelledby="ktor">
+    <h2 id="ktor">Ktor</h2>
+    <p class="meta"><strong>Versione dichiarata:</strong> 3.6.1 · <strong>Licenza:</strong> Apache-2.0</p>
+    <p>Client HTTP Kotlin e componenti correlati. © Ktor / JetBrains e contributori.</p>
+    <p class="links"><a href="./licenses/APACHE-2.0.txt">Testo integrale Apache-2.0</a><a href="https://github.com/ktorio/ktor">Progetto</a></p>
+  </section>
+
+  <p>Il progetto deriva inoltre da <a href="https://github.com/kota-zo/myspoti">MySpoti (GPL-3.0)</a> e incorpora altri componenti e adattamenti documentati nei sorgenti. Per il codice corrispondente alla release B100 consultare l'<a href="https://github.com/kekkox88/Nalivy-Downloads/releases/tag/v3.5.0-b100-rc1">archivio sorgente pubblicato</a>.</p>
+  <p>Un generatore di inventario delle dipendenze sarà valutato per le prossime build. Licenze e file NOTICE dei componenti incorporati manualmente richiedono comunque revisione dedicata.</p>
+  <footer>Pure music. Simply. · <a href="../">Nalivy Simply Free</a> · <a href="https://github.com/kekkox88/Nalivy-Downloads/blob/main/SOURCE-COMPLIANCE.md">Conformità sorgenti</a></footer>
+</main>
+</body>
+</html>

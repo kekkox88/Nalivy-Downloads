@@ -25,3 +25,21 @@ Il presente repository non deve includere credenziali e non deve mai essere conf
 ## Stato
 
 **PENDING — audit licenze e modalità di fornitura del sorgente corrispondente.**
+
+## Supplemento attribuzioni B100 — 22 novembre 2026
+
+Una verifica successiva alla pubblicazione della release ha rilevato avvisi
+runtime mancanti in `THIRD_PARTY_NOTICES.txt` per NewPipe Extractor,
+Rhino, jsoup, AndroidX Media3 e Ktor. I dettagli e i testi completi
+delle relative licenze sono ora consultabili nella pagina pubblica
+[Licenze open source B100](https://kekkox88.github.io/Nalivy-Downloads/legal/third-party-notices.html).
+
+**Distinzione importante:** gli APK originali e l'archivio del sorgente
+corrispondente già distribuiti non vengono modificati o sostituiti in modo
+invisibile. Questa è un'integrazione documentale separata. I testi
+aggiunti nei sorgenti di sviluppo entreranno nell'APK soltanto
+in una release successiva, compilata, firmata e verificata.
+
+Questo elenco mirato **non completa** l'audit delle dipendenze transitive,
+dei NOTICE Apache, del software vendorizzato e dei vincoli di
+redistribuzione. La revisione generale indicata sopra rimane aperta.
