@@ -23,6 +23,6 @@ Le GitHub Releases pubbliche sono intenzionalmente **manuali**. Nessun push sul 
 3. Caricare esclusivamente APK firmati e approvati, checksum e documenti sorgente/avvisi richiesti.
 4. Inserire release notes, architetture supportate, SHA-256 e il link al **Corresponding Source** della stessa revisione quando richiesto. Una RC va marcata **Pre-release**; le DEV non devono essere pubblicate come release approvate.
 5. Pubblicare la release manualmente. La pagina GitHub Pages rileverà la più recente release approvata con APK (anche RC), mostrandone il canale **RC · PREVIEW** oppure **STABLE**.
-6. Quando verrà integrato un update checker **in-app**, compilare il manifest `docs/updates/stable.json` con dati verificati (versione, code, firma/package coerenti, URL, SHA-256, changelog) e pubblicare l'aggiornamento al sito. Il manifest placeholder attuale **non è attivo** come servizio di aggiornamento in-app.
+6. Per **Nalivy 3.5.0 Build 100 e successive**, aggiornare **solo dopo aver pubblicato gli APK reali** il manifest `docs/updates/stable.json`, con `status: "published"`, `channel: "rc"` o `"stable"`, package ufficiale, `versionName`, `versionCode`, releasePage, URL HTTPS di ciascun APK, `abi` (`arm64-v8a`, `armeabi-v7a`, `universal` per TV), SHA-256 e **`sizeBytes` esatti**. Seguire `docs/updates/README.md`; non usare dati fittizi. Prima della pubblicazione il manifest resta `not_published`.
 
 **Mai disinstallare automaticamente l'app. Mai avviare un APK installer senza consenso esplicito dell'utente.**
