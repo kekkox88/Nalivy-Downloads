@@ -28,9 +28,9 @@ La disponibilità dei contenuti dipende dalla rete, dalle fonti e dalle condizio
 
 ### Download e aggiornamenti
 
-Le **APK approvate** vengono pubblicate esclusivamente nella sezione [Releases](https://github.com/kekkox88/Nalivy-Downloads/releases). La [pagina download](https://kekkox88.github.io/Nalivy-Downloads/) legge automaticamente l'ultima *release stabile* e mostra i file APK effettivamente presenti.
+Le **APK approvate** vengono pubblicate esclusivamente nella sezione [Releases](https://github.com/kekkox88/Nalivy-Downloads/releases). La [pagina download](https://kekkox88.github.io/Nalivy-Downloads/) mostra l'ultima release pubblicata con APK effettivi, distinguendo in modo esplicito le **Release Candidate (RC)** dalle versioni stabili.
 
-Se non sono presenti release stabili, significa che **non è stata ancora pubblicata una versione scaricabile da questo repository**. Non vengono proposti file fittizi o APK DEV.
+Se non sono presenti release pubblicate con APK, significa che **non è stata ancora pubblicata una versione scaricabile da questo repository**. Non vengono proposti file fittizi o APK DEV.
 
 Per aggiornare Nalivy senza perdere le configurazioni, utilizzare una APK con **stesso package name, stessa firma e versionCode appropriato**. Evitare di disinstallare l'app per aggiornare. Android richiede che l'utente confermi l'installazione degli APK distribuiti fuori dallo store.
 
