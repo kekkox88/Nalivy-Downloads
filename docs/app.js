@@ -1,10 +1,10 @@
 'use strict';
-// The public site ONLY lists the most recent published stable GitHub Release.
+// The public site lists the newest manually published release with APK, marking an RC explicitly.\n// Drafts and developer builds are not exposed by this page.
 // No private repository access, credentials, tracking, or APK is embedded here.
 const OWNER = 'kekkox88';
 const REPOSITORY = 'Nalivy-Downloads';
 const RELEASES = `https://github.com/${OWNER}/${REPOSITORY}/releases`;
-const LATEST = `https://api.github.com/repos/${OWNER}/${REPOSITORY}/releases/latest`;
+const LATEST = `https://api.github.com/repos/${OWNER}/${REPOSITORY}/releases?per_page=30`;
 const byId = id => document.getElementById(id);
 const state = byId('release-state');
 const nameEl = byId('release-name');
@@ -15,6 +15,7 @@ const notes = byId('release-notes');
 const notesText = byId('release-notes-text');
 const heroDownload = byId('hero-download');
 const releasePage = byId('release-page');
+const releaseChannel = byId('release-channel');
 const checksumLink = byId('checksum-link');
 function setState(text) { state.textContent = text; }
 function fallback(text, detail) {
@@ -24,6 +25,8 @@ function fallback(text, detail) {
   message.textContent = 'Le anteprime e le build DEV restano riservate alla Neptune Project Community.';
   files.hidden = true;
   notes.hidden = true;
+  checksumLink.hidden = true;
+  releaseChannel.textContent = 'IN PREPARAZIONE';
 }
 function addApk(asset) {
   const a = document.createElement('a');
@@ -48,24 +51,32 @@ async function renderRelease() {
       signal: controller.signal,
       cache: 'no-store'
     });
-    if (response.status === 404) {
-      fallback('In preparazione', 'Nessuna release stabile pubblicata al momento.');
-      return;
-    }
     if (!response.ok) throw new Error(`GitHub API HTTP ${response.status}`);
-    const release = await response.json();
-    if (!release || release.draft || release.prerelease || !Array.isArray(release.assets)) throw new Error('Release non valida');
-    const apk = release.assets.filter(x => x && typeof x.name === 'string' && /\.apk$/i.test(x.name) && typeof x.browser_download_url === 'string' && x.browser_download_url.startsWith(`https://github.com/${OWNER}/${REPOSITORY}/releases/download/`));
-    if (apk.length === 0) {
-      fallback('Nessun APK disponibile', 'Una release stabile esiste, ma non contiene file APK approvati.');
+    const published = await response.json();
+    if (!Array.isArray(published)) throw new Error('Unexpected releases response');
+    const hasTrustedDownload = asset => asset && typeof asset.name === 'string' &&
+      /\.apk$/i.test(asset.name) && typeof asset.browser_download_url === 'string' &&
+      asset.browser_download_url.startsWith(`https://github.com/${OWNER}/${REPOSITORY}/releases/download/`);
+    const releasesWithApk = published
+      .filter(x => x && x.draft !== true && Array.isArray(x.assets) && x.assets.some(hasTrustedDownload))
+      .sort((a, b) => Date.parse(b.published_at || b.created_at || '') - Date.parse(a.published_at || a.created_at || ''));
+    const release = releasesWithApk[0];
+    if (!release) {
+      fallback('In preparazione', 'Nessuna release approvata con APK pubblicata al momento.');
       return;
     }
-    setState('Release stabile disponibile');
+    const apk = release.assets.filter(hasTrustedDownload);
+    const isRc = release.prerelease === true ||
+      /(?:^|[-_.])(?:rc\d*|beta|preview|pre)(?:$|[-_.])/i.test(release.tag_name || '');
+    setState(isRc ? 'Release Candidate (RC) disponibile' : 'Release stabile disponibile');
+    releaseChannel.textContent = isRc ? 'RC · PREVIEW' : 'STABLE';
     nameEl.textContent = release.name || release.tag_name || 'Nalivy Simply Free';
     const date = release.published_at ? new Date(release.published_at) : null;
     const dateString = date && !Number.isNaN(date.getTime()) ? date.toLocaleDateString('it-IT', {year: 'numeric', month: 'long', day: 'numeric'}) : '';
     meta.textContent = [release.tag_name, dateString].filter(Boolean).join(' · ');
-    message.textContent = 'Scegli l’APK compatibile con il tuo dispositivo. Non disinstallare Nalivy per aggiornare.';
+    message.textContent = isRc
+      ? 'Versione RC di anteprima: scegli l’APK compatibile e leggi le limitazioni indicate nelle note. Non disinstallare l’app per aggiornare.'
+      : 'Scegli l’APK compatibile con il tuo dispositivo. Non disinstallare Nalivy per aggiornare.';
     files.replaceChildren();
     apk.forEach(addApk);
     files.hidden = false;
@@ -77,10 +88,8 @@ async function renderRelease() {
     }
     releasePage.href = typeof release.html_url === 'string' && release.html_url.startsWith(`${RELEASES}/tag/`) ? release.html_url : RELEASES;
     const checksums = release.assets.find(x => /^(SHA256SUMS\.txt|checksums\.sha256|sha256sums)$/i.test(x.name || '') && typeof x.browser_download_url === 'string' && x.browser_download_url.startsWith(`https://github.com/${OWNER}/${REPOSITORY}/releases/download/`));
-    if (checksums) {
-      checksumLink.href = checksums.browser_download_url;
-      checksumLink.hidden = false;
-    }
+    checksumLink.hidden = !checksums;
+    if (checksums) checksumLink.href = checksums.browser_download_url;
     const arm64 = apk.find(x => /arm64|aarch64|armv8/i.test(x.name)) || apk[0];
     heroDownload.href = arm64.browser_download_url;
     heroDownload.textContent = `↓ Scarica ${/arm64|aarch64|armv8/i.test(arm64.name) ? 'ARM64' : 'APK'}`;
