@@ -13,7 +13,7 @@
 
 ## Come si aggiorna il download sul sito
 
-Il sito interroga l'endpoint pubblico `https://api.github.com/repos/kekkox88/Nalivy-Downloads/releases/latest`: nessun token necessario. La ricerca considera **solo la più recente release non draft/non prerelease** che contiene APK. Se non esistono release stabili, mostra lo stato "In preparazione".
+Il sito interroga l'endpoint pubblico `https://api.github.com/repos/kekkox88/Nalivy-Downloads/releases?per_page=30`: nessun token necessario. La ricerca considera la **più recente release pubblicata, non draft, con APK** fra le ultime 30 (incluse le RC pubblicate come prerelease). Le RC mostrano il badge **RC · PREVIEW** e non vengono presentate come stabili. Se non esistono release stabili, mostra lo stato "In preparazione".
 
 ## Distinzione tra sito, APK e update in-app
 
