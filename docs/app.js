@@ -1,5 +1,6 @@
 'use strict';
-// The public site lists the newest manually published release with APK, marking an RC explicitly.\n// Drafts and developer builds are not exposed by this page.
+// The public site lists the newest manually published release with APK, marking an RC explicitly.
+// Drafts and developer builds are not exposed by this page.
 // No private repository access, credentials, tracking, or APK is embedded here.
 const OWNER = 'kekkox88';
 const REPOSITORY = 'Nalivy-Downloads';
@@ -55,10 +56,18 @@ async function renderRelease() {
     const published = await response.json();
     if (!Array.isArray(published)) throw new Error('Unexpected releases response');
     const hasTrustedDownload = asset => asset && typeof asset.name === 'string' &&
-      /\.apk$/i.test(asset.name) && typeof asset.browser_download_url === 'string' &&
+      /\.apk$/i.test(asset.name) && !/(?:^|[-_.])(?:dev|solo)(?:$|[-_.])/i.test(asset.name) &&
+      typeof asset.browser_download_url === 'string' &&
       asset.browser_download_url.startsWith(`https://github.com/${OWNER}/${REPOSITORY}/releases/download/`);
     const releasesWithApk = published
-      .filter(x => x && x.draft !== true && Array.isArray(x.assets) && x.assets.some(hasTrustedDownload))
+      .filter(x => x && x.draft !== true && x.published_at &&
+        !/(?:^|[-_.])(?:dev|solo)(?:$|[-_.])/i.test(x.tag_name || '') &&
+        Array.isArray(x.assets) && x.assets.some(hasTrustedDownload) &&
+        (x.tag_name !== 'v4.1.0-b104-rc1' ||
+          ['ARM64.apk','ARMv7a.apk','TV.apk'].every(suffix =>
+            x.assets.some(a => hasTrustedDownload(a) && a.name === 'Nalivy-Simply-Free-4.1.0-B104-RC-' + suffix)) &&
+          x.assets.some(a => a.name === 'SHA256SUMS.txt') &&
+          x.assets.some(a => /Corresponding-Source.*\.zip$/.test(a.name || ''))))
       .sort((a, b) => Date.parse(b.published_at || b.created_at || '') - Date.parse(a.published_at || a.created_at || ''));
     const release = releasesWithApk[0];
     if (!release) {
@@ -102,4 +111,35 @@ async function renderRelease() {
     clearTimeout(timeout);
   }
 }
+async function renderOtaStatus() {
+  const target = byId('ota-status');
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 8000);
+  try {
+    const response = await fetch('./updates/stable.json', {cache:'no-store', signal:controller.signal});
+    if (!response.ok) throw new Error('Feed unavailable');
+    const feed = await response.json();
+    if (feed.schema !== 1) throw new Error('Unknown schema');
+    if (feed.status === 'not_published') {
+      target.textContent = 'OTA non ancora attivo. Usa la sezione download per le release pubblicate.';
+      return;
+    }
+    if (feed.status !== 'published' || !Number.isSafeInteger(feed.versionCode) ||
+        feed.versionCode <= 0 || !/^\d+\.\d+\.\d+(?:[-.][A-Za-z0-9.-]+)?$/.test(feed.versionName || '') ||
+        !['rc','stable'].includes(feed.channel) || feed.packageName !== 'com.kekkox88.nalivy.expressive' ||
+        typeof feed.releasePage !== 'string' || !feed.releasePage.startsWith(RELEASES + '/tag/') ||
+        !Array.isArray(feed.apks) || feed.apks.length === 0 ||
+        !feed.apks.every(a => ['arm64-v8a','armeabi-v7a','universal'].includes(a.abi) &&
+          typeof a.url === 'string' && a.url.startsWith(RELEASES + '/download/') &&
+          a.url.endsWith('.apk') && /^[a-f0-9]{64}$/i.test(a.sha256 || '') &&
+          Number.isSafeInteger(a.sizeBytes) && a.sizeBytes > 0 && a.sizeBytes <= 256 * 1024 * 1024) ||
+        new Set(feed.apks.map(a => a.abi)).size !== feed.apks.length)
+      throw new Error('Invalid feed');
+    target.textContent = 'OTA pubblicato: ' + feed.versionName + ' · Build ' + feed.versionCode +
+      (feed.channel === 'rc' ? ' (RC)' : '') + '. Disponibile per installazioni precedenti compatibili.';
+  } catch (_) {
+    target.textContent = 'Stato OTA temporaneamente non verificabile. Controlla dall’app.';
+  } finally { clearTimeout(timeout); }
+}
 renderRelease();
+renderOtaStatus();

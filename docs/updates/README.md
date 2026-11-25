@@ -55,3 +55,7 @@ Questo è un **esempio**, da NON caricare come aggiornamento reale:
 I tre APK B100 sono la **baseline** dell'updater: se nel manifest è indicata la stessa Build 100, il checker non proporrà di reinstallarla. Il primo aggiornamento in-app richiederà normalmente un `versionCode` successivo, per esempio 101.
 
 Il checker non disinstalla l'app e non gestisce aggiornamenti silenziosi. La pagina GitHub Pages usa invece l'API Releases per mostrare anche gli APK correnti, separatamente dal manifest.
+
+## B104 — in preparazione
+
+Tag proposto: `v4.1.0-b104-rc1`. Usare i tre APK RC 4.1.0/104 prodotti dallo stesso checkout, non il laboratorio SOLO. Lo script privato `tools/prepare_b104_ota.py` genera un candidato solo dopo aver confrontato gli APK locali con i byte pubblicati e SHA256SUMS. Non modificare il feed attivo prima dell'approvazione. Il sito mostra separatamente lo stato effettivo del feed OTA.
