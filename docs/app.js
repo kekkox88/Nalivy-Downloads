@@ -62,7 +62,8 @@ async function renderRelease() {
     // Keep the last complete public release visible until all three new targets are present.
     const completeRelease = release => {
       const prefix = {'v4.1.0-b104-rc1':'Nalivy-Simply-Free-4.1.0-B104-RC-',
-                      'v4.1.1-b105-rc1':'Nalivy-Simply-Free-4.1.1-B105-RC-'}[release.tag_name];
+                      'v4.1.1-b105-rc1':'Nalivy-Simply-Free-4.1.1-B105-RC-',
+                      'v4.1.2-b106-rc1':'Nalivy-Simply-Free-4.1.2-B106-RC-'}[release.tag_name];
       if (!prefix) return true;
       const base = RELEASES + '/download/' + release.tag_name + '/';
       const uploaded = a => a && a.state === 'uploaded' &&
