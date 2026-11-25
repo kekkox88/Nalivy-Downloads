@@ -1,12 +1,39 @@
 {
   "schema": 1,
-  "channel": "stable",
-  "status": "not_published",
-  "versionName": null,
-  "versionCode": null,
-  "packageName": null,
-  "publishedAt": null,
-  "releasePage": null,
-  "apks": [],
-  "changelog": []
+  "channel": "rc",
+  "status": "published",
+  "versionName": "4.1.1",
+  "versionCode": 105,
+  "packageName": "com.kekkox88.nalivy.expressive",
+  "publishedAt": "2026-11-25T19:30:37Z",
+  "releasePage": "https://github.com/kekkox88/Nalivy-Downloads/releases/tag/v4.1.1-b105-rc1",
+  "apks": [
+    {
+      "abi": "arm64-v8a",
+      "url": "https://github.com/kekkox88/Nalivy-Downloads/releases/download/v4.1.1-b105-rc1/Nalivy-Simply-Free-4.1.1-B105-RC-ARM64.apk",
+      "sha256": "cb2b63407ff71edb877d753bb19eb5665d2357946b8bcf73ea02571f34145d7a",
+      "sizeBytes": 13219313
+    },
+    {
+      "abi": "armeabi-v7a",
+      "url": "https://github.com/kekkox88/Nalivy-Downloads/releases/download/v4.1.1-b105-rc1/Nalivy-Simply-Free-4.1.1-B105-RC-ARMv7a.apk",
+      "sha256": "422f02b684e7147bf50a6382555403baede6b3be5a06b8df139e5b0b2e853c92",
+      "sizeBytes": 13054441
+    },
+    {
+      "abi": "universal",
+      "url": "https://github.com/kekkox88/Nalivy-Downloads/releases/download/v4.1.1-b105-rc1/Nalivy-Simply-Free-4.1.1-B105-RC-TV.apk",
+      "sha256": "c35301349f1756a244c09207077cc697d5361df002eb675b1378f2f1fd1ec2f3",
+      "sizeBytes": 13808267
+    }
+  ],
+  "changelog": [
+    "Aura Eclipse — Neptune Recovery: matching tra cataloghi, ID, sessioni e diagnostica; disponibilità dipendente dalle sorgenti.",
+    "Nuvola Adaptive: coordinamento, priorità dei profili e fallback preservati.",
+    "Simply Your Way: Home personalizzabile, playlist e album fissabili, backup preferenze e opzioni player.",
+    "Smart Saver Feather Edition: palette leggere, osservatori grafici condivisi e cache metadati incrementale; risparmi da misurare sul dispositivo.",
+    "Simply Insights: riepilogo locale prioritario, selettori adattivi e gestione delle classifiche Spotify indisponibili.",
+    "Libreria: puntine compatte per playlist e album, più spazio per titoli e autori.",
+    "APK ARM64, ARMv7a e TV universal. Release Candidate: collaudo su dispositivo ancora da completare."
+  ]
 }
