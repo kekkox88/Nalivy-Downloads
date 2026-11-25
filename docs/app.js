@@ -59,15 +59,26 @@ async function renderRelease() {
       /\.apk$/i.test(asset.name) && !/(?:^|[-_.])(?:dev|solo)(?:$|[-_.])/i.test(asset.name) &&
       typeof asset.browser_download_url === 'string' &&
       asset.browser_download_url.startsWith(`https://github.com/${OWNER}/${REPOSITORY}/releases/download/`);
+    // Keep the last complete public release visible until all three new targets are present.
+    const completeRelease = release => {
+      const prefix = {'v4.1.0-b104-rc1':'Nalivy-Simply-Free-4.1.0-B104-RC-',
+                      'v4.1.1-b105-rc1':'Nalivy-Simply-Free-4.1.1-B105-RC-'}[release.tag_name];
+      if (!prefix) return true;
+      const base = RELEASES + '/download/' + release.tag_name + '/';
+      const uploaded = a => a && a.state === 'uploaded' &&
+        Number.isSafeInteger(a.size) && a.size > 0 && a.browser_download_url === base + a.name;
+      const apk = release.assets.filter(a => /\.apk$/i.test(a.name || ''));
+      return apk.length === 3 && new Set(apk.map(a => a.name)).size === 3 &&
+        ['ARM64.apk','ARMv7a.apk','TV.apk'].every(suffix =>
+          apk.some(a => uploaded(a) && hasTrustedDownload(a) && a.name === prefix + suffix && a.size > 1000000)) &&
+        release.assets.some(a => uploaded(a) && a.name === 'SHA256SUMS.txt') &&
+        release.assets.some(a => uploaded(a) && /Corresponding-Source.*\.zip$/.test(a.name || ''));
+    };
     const releasesWithApk = published
       .filter(x => x && x.draft !== true && x.published_at &&
         !/(?:^|[-_.])(?:dev|solo)(?:$|[-_.])/i.test(x.tag_name || '') &&
         Array.isArray(x.assets) && x.assets.some(hasTrustedDownload) &&
-        (x.tag_name !== 'v4.1.0-b104-rc1' ||
-          ['ARM64.apk','ARMv7a.apk','TV.apk'].every(suffix =>
-            x.assets.some(a => hasTrustedDownload(a) && a.name === 'Nalivy-Simply-Free-4.1.0-B104-RC-' + suffix)) &&
-          x.assets.some(a => a.name === 'SHA256SUMS.txt') &&
-          x.assets.some(a => /Corresponding-Source.*\.zip$/.test(a.name || ''))))
+        completeRelease(x))
       .sort((a, b) => Date.parse(b.published_at || b.created_at || '') - Date.parse(a.published_at || a.created_at || ''));
     const release = releasesWithApk[0];
     if (!release) {

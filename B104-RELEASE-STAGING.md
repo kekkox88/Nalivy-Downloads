@@ -1,6 +1,6 @@
 # Nalivy Simply Free 4.1.0 · Build 104 — release candidate (staging)
 
-**Non ancora pubblicata.** Titolo e note da usare soltanto dopo collaudo, verifica licenze e firma.
+**Superata dalla B105 come candidato pubblico; non pubblicata.** Titolo e note da usare soltanto dopo collaudo, verifica licenze e firma.
 
 ## Novità / What's new
 

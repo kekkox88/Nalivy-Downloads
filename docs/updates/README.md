@@ -56,6 +56,6 @@ I tre APK B100 sono la **baseline** dell'updater: se nel manifest è indicata la
 
 Il checker non disinstalla l'app e non gestisce aggiornamenti silenziosi. La pagina GitHub Pages usa invece l'API Releases per mostrare anche gli APK correnti, separatamente dal manifest.
 
-## B104 — in preparazione
+## B105 — candidato pubblico in preparazione
 
-Tag proposto: `v4.1.0-b104-rc1`. Usare i tre APK RC 4.1.0/104 prodotti dallo stesso checkout, non il laboratorio SOLO. Lo script privato `tools/prepare_b104_ota.py` genera un candidato solo dopo aver confrontato gli APK locali con i byte pubblicati e SHA256SUMS. Non modificare il feed attivo prima dell'approvazione. Il sito mostra separatamente lo stato effettivo del feed OTA.
+La B104 resta una baseline intermedia non pubblicata. Il candidato pubblico è 4.1.1/105, tag `v4.1.1-b105-rc1`. Usare i tre APK RC prodotti dal checkout B105 verificato, non il laboratorio SOLO. Lo script privato `tools/prepare_b105_ota.py` confronta gli APK locali con quelli pubblicati e SHA256SUMS prima di generare il manifest candidato. Non attivare il feed prima dell'approvazione. L'aggiornamento da B100/B103/B104 è possibile solo con updater presente, firma/package e ABI compatibili. La B105 non offre se stessa.
