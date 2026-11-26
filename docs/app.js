@@ -63,7 +63,10 @@ async function renderRelease() {
     const completeRelease = release => {
       const prefix = {'v4.1.0-b104-rc1':'Nalivy-Simply-Free-4.1.0-B104-RC-',
                       'v4.1.1-b105-rc1':'Nalivy-Simply-Free-4.1.1-B105-RC-',
-                      'v4.1.2-b106-rc1':'Nalivy-Simply-Free-4.1.2-B106-RC-'}[release.tag_name];
+                      'v4.1.2-b106-rc1':'Nalivy-Simply-Free-4.1.2-B106-RC-',
+                      'v5.0.0-b107-rc1':'Nalivy-Simply-Free-5.0.0-B107-RC-'}[release.tag_name];
+      // Ragnarök is staged as RC; never promote an unapproved or differently tagged B107.
+      if (/b107/i.test(release.tag_name || '') && (!prefix || release.prerelease !== true)) return false;
       if (!prefix) return true;
       const base = RELEASES + '/download/' + release.tag_name + '/';
       const uploaded = a => a && a.state === 'uploaded' &&

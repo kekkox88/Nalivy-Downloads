@@ -59,3 +59,7 @@ Il checker non disinstalla l'app e non gestisce aggiornamenti silenziosi. La pag
 ## B105 — candidato pubblico in preparazione
 
 La B104 resta una baseline intermedia non pubblicata. Il candidato pubblico è 4.1.1/105, tag `v4.1.1-b105-rc1`. Usare i tre APK RC prodotti dal checkout B105 verificato, non il laboratorio SOLO. Lo script privato `tools/prepare_b105_ota.py` confronta gli APK locali con quelli pubblicati e SHA256SUMS prima di generare il manifest candidato. Non attivare il feed prima dell'approvazione. L'aggiornamento da B100/B103/B104 è possibile solo con updater presente, firma/package e ABI compatibili. La B105 non offre se stessa.
+
+## B107 — Ragnarök (staging)
+
+La B106 pubblicata resta attiva durante la preparazione della 5.0.0/107. Vedere `B107-RELEASE-STAGING.md` nella radice e `tools/prepare_b107_ota.py`. Non sostituire il feed prima del gate completo e dell'approvazione.
